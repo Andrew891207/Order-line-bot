@@ -17,4 +17,4 @@
 - 點選【店家資訊】會顯示店家店家名稱、地址、營業時間、連絡電話以及店狗名稱
 
 ## FSM圖
-![](https://i.imgur.com/zEHiCcn.png)
+![](https://i.imgur.com/TlxdMWt.jpg)
