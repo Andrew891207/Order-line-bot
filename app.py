@@ -54,11 +54,10 @@ machine = TocMachine(
         {"trigger": "advance", 'source': 'order1', 'dest': 'cash', 'conditions': 'is_going_to_cash'},
         {"trigger": "advance", 'source': 'cash', 'dest': 'lobby', 'conditions': 'is_going_to_lobby'},
         {"trigger": "advance", 'source': 'menu', 'dest': 'lobby', 'conditions': 'is_going_to_lobby'},
-        {"trigger": "go_back", "source": ["lobby", "order1", "order2", 
-        "cash," "menu", "rec_coffee", "cal_dessert", "intro", "order", 
-        "bitter", "bitter_first", "bitter_second", "bitter_third", "sour", 
-        "sour_first", "sour_second", "sour_third", "brownie", "scone", "muffin", 
-        "cookie", ], "dest": "user"},
+        
+        
+        #{"trigger": "go_back", "source": [], "dest": "user"},
+        
     ],
     initial="user",
     auto_transitions=False,
@@ -135,7 +134,9 @@ def webhook_handler():
         response = machine.advance(event)
         if response == False:
             if (event.message.text=='fsm'):
-                url=show_fsm()
+                show_fsm()
+            elif (machine.state=='user'):
+                send_text_message(event.reply_token, "請輸入【選單】")
             else:
                 send_text_message(event.reply_token, "把字打對很難嗎?")
 
